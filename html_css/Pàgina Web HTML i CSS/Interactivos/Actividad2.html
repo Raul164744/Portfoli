@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <title>Interactius - Activitat 2 (Image switcher)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:20px;background:#f7f7fb}
+    .card{max-width:700px;margin:0 auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 6px 18px rgba(20,20,50,0.07)}
+    .preview{width:100%;height:320px;display:flex;align-items:center;justify-content:center;background:#eef; border-radius:6px;overflow:hidden}
+    .preview img{max-width:100%;height:auto}
+    .thumbs{display:flex;gap:10px;margin-top:12px}
+    .thumbs button{flex:0 0 auto;padding:6px;border-radius:6px;border:1px solid #ccc;background:#fff;cursor:pointer}
+    .thumbs button[aria-pressed="true"]{outline:3px solid #5c5cff}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Activitat 2: Canviador d'imatges</h1>
+    <p>Premeu una miniatura per canviar la imatge principal. També es pot navegar amb el teclat.</p>
+
+    <div class="preview" id="preview">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='320'><rect width='100%' height='100%' fill='%23cfe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23333'>Imatge 1</text></svg>" alt="Imatge principal" id="mainImg">
+    </div>
+
+    <div class="thumbs" role="tablist" aria-label="Miniatures">
+      <button aria-pressed="true" data-src="1" aria-label="Mostra imatge 1">1</button>
+      <button aria-pressed="false" data-src="2" aria-label="Mostra imatge 2">2</button>
+      <button aria-pressed="false" data-src="3" aria-label="Mostra imatge 3">3</button>
+    </div>
+
+    <script>
+      const main = document.getElementById('mainImg');
+      const thumbs = document.querySelectorAll('.thumbs button');
+      const images = {
+        '1': "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='320'><rect width='100%' height='100%' fill='%23cfe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23333'>Imatge 1</text></svg>",
+        '2': "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='320'><rect width='100%' height='100%' fill='%23fec'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23333'>Imatge 2</text></svg>",
+        '3': "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='320'><rect width='100%' height='100%' fill='%23cfe5ff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23333'>Imatge 3</text></svg>"
+      };
+
+      thumbs.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const key = btn.getAttribute('data-src');
+          main.src = images[key];
+          thumbs.forEach(b=>b.setAttribute('aria-pressed','false'));
+          btn.setAttribute('aria-pressed','true');
+        });
+        btn.addEventListener('keyup', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){ btn.click(); }
+        });
+      });
+    </script>
+  </main>
+</body>
+</html>

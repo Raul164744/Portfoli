@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividad 1 - Header</title>
+
+    <style>
+        header {
+            background-color: #1a4cff;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .buscador input {
+            padding: 5px;
+        }
+
+        .buscador button {
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Logo -->
+        <div class="logo">MiLogo</div>
+
+        <!-- Navegador -->
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <!-- Formulario de búsqueda -->
+        <form class="buscador">
+            <input type="text" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+        </form>
+    </header>

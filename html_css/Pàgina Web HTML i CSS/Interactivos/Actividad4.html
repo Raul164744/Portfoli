@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <title>Interactius - Activitat 4 (Color changer)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{--bg:#ffffff;--fg:#222}
+    body{font-family:Arial,Helvetica,sans-serif;padding:20px;background:#f7f7fb}
+    .card{max-width:680px;margin:0 auto;background:var(--bg);color:var(--fg);padding:20px;border-radius:8px;box-shadow:0 6px 18px rgba(20,20,50,0.07)}
+    .swatches{display:flex;gap:10px;margin-top:12px}
+    .swatches button{padding:10px;border-radius:6px;border:1px solid #ccc;cursor:pointer}
+    .sample{margin-top:16px;padding:16px;border-radius:6px;background:rgba(0,0,0,0.04)}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Activitat 4: Canviador de colors</h1>
+    <p>Tria una paleta per veure com canvia el tema. Això ajuda a comprovar el contrast i l'accessibilitat visual.</p>
+
+    <div class="swatches" role="radiogroup" aria-label="Colors del tema">
+      <button data-bg="#ffffff" data-fg="#222" aria-checked="true">Clar</button>
+      <button data-bg="#0b1220" data-fg="#e6f0ff" aria-checked="false">Fosc</button>
+      <button data-bg="#fff7e6" data-fg="#442200" aria-checked="false">Càlid</button>
+    </div>
+
+    <div class="sample" id="sample">
+      <h2>Mostra de contingut</h2>
+      <p>Aquest és un paràgraf de prova per avaluar llegibilitat amb la paleta seleccionada.</p>
+    </div>
+
+    <script>
+      const buttons = document.querySelectorAll('.swatches button');
+      const card = document.querySelector('.card');
+      buttons.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const bg = btn.getAttribute('data-bg');
+          const fg = btn.getAttribute('data-fg');
+          document.documentElement.style.setProperty('--bg', bg);
+          document.documentElement.style.setProperty('--fg', fg);
+          buttons.forEach(b=>b.setAttribute('aria-checked','false'));
+          btn.setAttribute('aria-checked','true');
+        });
+        btn.addEventListener('keyup', (e)=>{ if(e.key === 'Enter' || e.key === ' ') btn.click(); });
+      });
+    </script>
+
+  </main>
+</body>
+</html>

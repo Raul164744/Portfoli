@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <title>Interactius - Activitat 1 (Toggle)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:20px;background:#f7f7fb}
+    .card{max-width:600px;margin:0 auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 6px 18px rgba(20,20,50,0.07)}
+    button{padding:10px 14px;border-radius:6px;border:none;background:#5c5cff;color:#fff;font-weight:600;cursor:pointer}
+    #extra{margin-top:16px;padding:12px;background:#f1f3ff;border-radius:6px}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Activitat 1: Mostra/Amaga (Toggle)</h1>
+    <p>Premeu el botó per mostrar o amagar informació addicional. L'exemple és accessible per teclat i lector de pantalla.</p>
+
+    <p>
+      <button id="toggleBtn" aria-expanded="false" aria-controls="extra">Mostra informació</button>
+    </p>
+
+    <div id="extra" hidden>
+      <h2>Informació addicional</h2>
+      <p>Aquesta informació es pot mostrar o amagar amb el botó. Té sentit per a usuaris que necessiten més detalls.</p>
+    </div>
+
+    <script>
+      const btn = document.getElementById('toggleBtn');
+      const extra = document.getElementById('extra');
+      btn.addEventListener('click', ()=>{
+        const isOpen = !extra.hasAttribute('hidden');
+        if(isOpen){
+          extra.setAttribute('hidden','');
+          btn.setAttribute('aria-expanded','false');
+          btn.textContent = 'Mostra informació';
+        } else {
+          extra.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded','true');
+          btn.textContent = 'Amaga informació';
+        }
+      });
+    </script>
+  </main>
+</body>
+</html>

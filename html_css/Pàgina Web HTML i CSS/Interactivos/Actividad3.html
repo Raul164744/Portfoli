@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <title>Interactius - Activitat 3 (Form validation)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:20px;background:#f7f7fb}
+    .card{max-width:540px;margin:0 auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 6px 18px rgba(20,20,50,0.07)}
+    label{display:block;margin-top:10px}
+    input{width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ccc}
+    .error{color:#b00020;margin-top:6px;font-size:14px}
+    button{margin-top:14px;padding:10px 12px;border-radius:6px;border:none;background:#5c5cff;color:#fff}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Activitat 3: Validació de formulari</h1>
+    <p>Omple el formulari; el missatge d'error es mostra de forma accessible amb <code>aria-live</code>.</p>
+
+    <form id="form">
+      <label for="nom">Nom</label>
+      <input id="nom" name="nom" type="text" required aria-required="true">
+      <div id="err-nom" class="error" aria-live="polite"></div>
+
+      <label for="email">Correu electrònic</label>
+      <input id="email" name="email" type="email" required aria-required="true">
+      <div id="err-email" class="error" aria-live="polite"></div>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+      const form = document.getElementById('form');
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        let ok = true;
+        const nom = document.getElementById('nom');
+        const email = document.getElementById('email');
+        document.getElementById('err-nom').textContent = '';
+        document.getElementById('err-email').textContent = '';
+
+        if(nom.value.trim().length < 2){
+          document.getElementById('err-nom').textContent = 'Introdueix un nom vàlid (mínim 2 caràcters).';
+          ok = false;
+          nom.focus();
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailPattern.test(email.value)){
+          document.getElementById('err-email').textContent = 'Introdueix un correu electrònic vàlid.';
+          if(ok) email.focus();
+          ok = false;
+        }
+
+        if(ok){
+          alert('Formulari enviat (simulat). Gràcies!');
+          form.reset();
+        }
+      });
+    </script>
+  </main>
+</body>
+</html>
