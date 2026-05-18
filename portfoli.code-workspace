@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../0_exercicis_JS"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "0_exercicis_JS"
+	}
+}
