@@ -1,0 +1,196 @@
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#eee;
+}
+
+/* CAPÇALERA */
+header{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:25px;
+    font-size:30px;
+}
+
+/* MENÚ */
+nav{
+    background:black;
+    display:flex;
+    padding-left:20px;
+}
+
+nav div{
+    color:white;
+    padding:10px 20px;
+    border-right:1px solid #333;
+}
+
+/* CONTENIDOR */
+.contenidor{
+    background:white;
+    margin:15px;
+    border:1px solid #aaa;
+    padding:15px;
+}
+
+/* TÍTOLS */
+h2{
+    margin-top:35px;
+    margin-bottom:20px;
+    padding-bottom:10px;
+    font-size:28px;
+    color:#333;
+    border-bottom:3px solid #5c5cff;
+}
+
+h2:nth-of-type(2){
+    border-bottom-color:#ffb357;
+}
+
+/* GRAELLA */
+.graella{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+}
+
+/* TARGETES */
+.targeta{
+    border:none;
+    text-align:center;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:all 0.3s ease;
+    background:white;
+}
+
+.targeta:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* TÍTOLS DE TARGETA */
+.titol-html{
+    background:#5c5cff;
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+.titol-css{
+    background:#ffb357;
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+/* EXERCICIS DESPLEGABLES */
+details.exercicis{
+    border-top:2px solid #ddd;
+    background:white;
+    font-size:12px;
+    transition: all 0.3s ease;
+}
+
+summary{
+    padding:12px 15px;
+    cursor:pointer;
+    list-style:none;
+    font-weight:600;
+    color:#333;
+    background:linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: all 0.3s ease;
+    user-select:none;
+}
+
+summary:hover{
+    background:linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    color:#000;
+    transform:translateY(-2px);
+}
+
+summary::marker{
+    content:"";
+}
+
+summary::before{
+    content:"▼ ";
+    margin-right:8px;
+    transition: transform 0.3s ease;
+    font-size:10px;
+}
+
+details[open] > summary::before{
+    transform:rotate(-180deg);
+}
+
+.contingut{
+    padding:15px;
+    background:#f8f9fa;
+    border-top:2px solid #e9ecef;
+    text-align:left;
+    animation:slideDown 0.3s ease;
+}
+
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.contingut ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));
+    gap:10px;
+}
+
+.contingut li{
+    margin:0;
+}
+
+.contingut a{
+    display:block;
+    padding:10px 15px;
+    background:linear-gradient(135deg, #5c5cff 0%, #4a4ad0 100%);
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    transition:all 0.3s ease;
+    text-align:center;
+    font-weight:500;
+    border:2px solid transparent;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.titol-css ~ details.exercicis .contingut a{
+    background:linear-gradient(135deg, #ffb357 0%, #ff9900 100%);
+}
+
+.contingut a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    border-color:rgba(255,255,255,0.3);
+}
+
+/* PEU */
+footer{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:15px;
+}
